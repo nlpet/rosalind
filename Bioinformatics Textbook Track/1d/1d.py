@@ -6,10 +6,10 @@ def find_kmers():
 
 	s= f[0].replace('\n','')
 	k,L,t = [int(n) for n in f[1].split()]
-	
+
 	results = {}
 	kmers = []
-	
+
 	for i in range(len(s)-k+1):
 		indices = [m.start()+1 for m in re.finditer(s[i:i+k], s)]
 		if indices >= t: 
@@ -18,7 +18,7 @@ def find_kmers():
 	for key,v in results.items():
 		for i in range(len(v)-t+1):
 			if ((v[i+t-1]+k) - v[i] <= L) and (key not in kmers): kmers.append(key)
-				
+
 	return ' '.join(kmers)
 
 	
